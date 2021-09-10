@@ -1,34 +1,100 @@
-departments
--
-dept_no VARCHAR (100) NOT NULL
-dept_name VARCHAR (100) NOT NULL
+## code copied from pgAdmin which was inported from QDB
 
-dept_emp
--
-emp_no INTEGER (100) NOT NULL
-dept_no VARCHAR (100) NOT NULL
+## departments table
+DROP TABLE public.departments;
 
-dept_manager
--
-dept_no VARCHAR (100) NOT NULL
-emp_no INTEGER (100) NOT NULL
+CREATE TABLE public.departments
+(
+    dept_no character varying COLLATE pg_catalog."default",
+    dept_name character varying COLLATE pg_catalog."default"
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-employees
--
-emp_no INTEGER (100) NOT NULL
-emp_title_id VARCHAR (100) NOT NULL
-birth_date VARCHAR (100) NOT NULL
-first_name VARCHAR (100) NOT NULL
-last_name VARCHAR (100) NOT NULL
-sex VARCHAR (10) NOT NULL
-hire_date VARCHAR (100) NOT NULL
+ALTER TABLE public.departments
+    OWNER to postgres;
 
-salaries
--
-emp_no INTEGER (100) NOT NULL
-salary INTEGER (100) NOT NULL
+## dept_emp table
+DROP TABLE public.dept_emp;
 
-titles
--
-title_id  VARCHAR (100) NOT NULL
-title  VARCHAR (100) NOT NULL
+CREATE TABLE public.dept_emp
+(
+    emp_no integer,
+    dept_no character varying COLLATE pg_catalog."default"
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.dept_emp
+    OWNER to postgres;
+
+## dept_manager table
+DROP TABLE public.dept_manager;
+
+CREATE TABLE public.dept_manager
+(
+    dept_no character varying COLLATE pg_catalog."default",
+    emp_no integer
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.dept_manager
+    OWNER to postgres;
+
+## employees table
+DROP TABLE public.employees;
+
+CREATE TABLE public.employees
+(
+    emp_no integer,
+    emp_title_id character varying COLLATE pg_catalog."default",
+    birth_date date,
+    first_name character varying COLLATE pg_catalog."default",
+    last_name character varying COLLATE pg_catalog."default",
+    sex character varying COLLATE pg_catalog."default",
+    hire_date date
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.employees
+    OWNER to postgres;
+
+##
+DROP TABLE public.salaries;
+
+CREATE TABLE public.salaries
+(
+    emp_no integer,
+    salary integer
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.salaries
+    OWNER to postgres;
+
+## titles
+CREATE TABLE public.titles
+(
+    title_id character varying COLLATE pg_catalog."default",
+    title character varying COLLATE pg_catalog."default"
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.titles
+    OWNER to postgres;
